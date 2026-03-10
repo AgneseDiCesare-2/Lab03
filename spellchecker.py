@@ -1,21 +1,18 @@
 import time
-import multiDictionary as md
+from multiDictionary import MultiDictionary as md
 
 class SpellChecker:
-
     def __init__(self):
-        pass
+        self._multiDictionary = md.MultiDictionary()
 
-    def handleSentence(self, txtIn, language):
+    def handleSentence(self, txtIn, path):
         #deve fornire l'output per il main
         paroleErrate=list()
-        lista=md.searchWord(self, txtIn, language)
+        lista=self._multiDictionary.searchWord(txtIn, path)
         for parola in lista:
-            if parola.corretta==True:
-                continue
-            else:
+            if not parola.corretta:
                 paroleErrate.append(parola)
-        print(paroleErrate)
+        return paroleErrate
 
     def printMenu(self):
         print("______________________________\n" +

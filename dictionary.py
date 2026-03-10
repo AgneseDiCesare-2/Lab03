@@ -2,19 +2,16 @@ from fileinput import filename
 
 class Dictionary:
     def __init__(self):
-        pass
+        self._dict = []
 
     def loadDictionary(self,path): #apre il dizionario che gli passo in input
-        parole = list()  # parole memorizzate: lista al momento vuota
         with open(path, "r", encoding="utf-8") as f:
-            righe=f.readlines()
-            for parola in righe:
-                parole.append(parola.strip())
-        return parole
+            self._dict=[riga.strip() for riga in f.readlines()]
+        return self._dict
 
     def printAll(self):
-        pass
-
+        for parola in self._dict:
+            print(parola)
 
     @property
     def dict(self):

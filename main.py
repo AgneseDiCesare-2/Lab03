@@ -2,38 +2,39 @@ import spellchecker
 
 sc = spellchecker.SpellChecker()
 file=None
+
 while(True):
     sc.printMenu()
-
     txtIn = input()
     # Add input control here!
-    if (txtIn) not in [1,2,3,4]:
+    if (txtIn) not in ["1","2","3","4"]:
         print("Errore, inserisci un numero da 1 a 4!")
         continue
 
     if int(txtIn) == 1:
-        file="italian.txt"
+        file="resources/italian.txt"
         print("Inserisci la tua frase in Italiano\n")
         txtIn = input()
-        sc.handleSentence(txtIn,"italian")
-        continue
+        errori=sc.handleSentence(txtIn,file)
+        print("Parole errate:", [str(p) for p in errori])
 
-    if int(txtIn) == 2:
+    elif int(txtIn) == 2:
         print("Inserisci la tua frase in Inglese\n")
-        file="English.txt"
+        file="resources/English.txt"
         txtIn = input() #scrivo la frase
-        sc.handleSentence(txtIn,"english")
+        errori = sc.handleSentence(txtIn, file)
+        print("Parole errate:", [str(p) for p in errori])
 
         continue
 
-    if int(txtIn) == 3:
+    elif int(txtIn) == 3:
         print("Inserisci la tua frase in Spagnolo\n")
-        file="Spanish.txt"
+        file="resources/Spanish.txt"
         txtIn = input()
-        sc.handleSentence(txtIn,"spanish")
-        continue
+        errori = sc.handleSentence(txtIn, file)
+        print("Parole errate:", [str(p) for p in errori])
 
-    if int(txtIn) == 4:
+    elif int(txtIn) == 4:
         break
 
 

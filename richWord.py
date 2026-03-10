@@ -1,12 +1,8 @@
-from multiDictionary import MultiDictionary as md
-from main import txtIn, file
-
-dictionaryRif = md.printDic(file)
 
 class RichWord:
-    def __init__(self, parola):
-        self._parola = parola
-        self._corretta = dictionaryRif.contains(parola) #TRUE SE LA CONTIENE, FALSE ALTRIMENTI
+    def __init__(self, parola, corretta=None):
+        self.parola = parola
+        self._corretta = corretta
 
     @property
     def corretta(self):

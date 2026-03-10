@@ -1,23 +1,22 @@
-import dictionary as d
-import richWord as rw
-from main import txtIn, file
-
-listaRichWord=list()
+from dictionary import Dictionary
+from richWord import RichWord
 
 class MultiDictionary:
     def __init__(self):
-       pass
+       self._dict=Dictionary()
 
     def printDic(self, language):
-        return d.loadDictonary(file)
-        #restituisce una lista di parole
+        return self._dictonary.loadDictonary(path)
 
-    def searchWord(self, testo, language): #
-        wordsEsistenti=self.printDic(language) #tutte le parole che esistono nella lingua
-        paroleInserite=testo.split().strip()
+    def searchWord(self, testo, path): #
+        parole_dizionario = self.printDic(path)
+        listaRichWord = []
+        paroleInserite = testo.split().strip()
         for word in paroleInserite:
-            nuova=RichWord(word)
-            listaRichWord.append(nuova) #PRIMA DEVO ASSICURARMI CHE IL VALORE BOOLEANO VENGA IMPOSTATO, COSI' DOVREBBE
+            corretta = word.lower() in parole_dizionario
+            nuova = RichWord(word, corretta)
+            listaRichWord.append(nuova)
+
         return listaRichWord
 
 
