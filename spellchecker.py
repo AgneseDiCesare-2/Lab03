@@ -1,5 +1,4 @@
 import time
-
 import multiDictionary as md
 
 class SpellChecker:
@@ -8,7 +7,15 @@ class SpellChecker:
         pass
 
     def handleSentence(self, txtIn, language):
-        pass
+        #deve fornire l'output per il main
+        paroleErrate=list()
+        lista=md.searchWord(self, txtIn, language)
+        for parola in lista:
+            if parola.corretta==True:
+                continue
+            else:
+                paroleErrate.append(parola)
+        print(paroleErrate)
 
     def printMenu(self):
         print("______________________________\n" +

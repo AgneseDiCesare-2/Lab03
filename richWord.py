@@ -1,16 +1,19 @@
+from multiDictionary import MultiDictionary as md
+from main import txtIn, file
+
+dictionaryRif = md.printDic(file)
+
 class RichWord:
     def __init__(self, parola):
-        self._parola = parola # this is a string
-        self._corretta = None #this is a bool
+        self._parola = parola
+        self._corretta = dictionaryRif.contains(parola) #TRUE SE LA CONTIENE, FALSE ALTRIMENTI
 
     @property
     def corretta(self):
-        # print("getter of parola called" )
         return self._corretta
 
     @corretta.setter
     def corretta(self, boolValue):
-        # print("setter of parola called" )
         self._corretta = boolValue
 
     def __str__(self):
