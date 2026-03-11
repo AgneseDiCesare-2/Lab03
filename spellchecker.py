@@ -6,8 +6,20 @@ class SpellChecker:
 
     def handleSentence(self, txtIn, path):
         #deve fornire l'output per il main
+        print("-"*32)
+        print("Using Contains: ")
         paroleErrate=list()
         lista=self._multiDictionary.searchWord(txtIn, path)
+        for parola in lista:
+            if not parola.corretta:
+                paroleErrate.append(parola)
+        return paroleErrate
+
+    def handleSentenceLinear(self, txtIn, path):
+        print("-" * 32)
+        print("Using Linear Research: ")
+        paroleErrate = list()
+        lista = self._multiDictionary.searchWordLinear(txtIn, path)
         for parola in lista:
             if not parola.corretta:
                 paroleErrate.append(parola)
