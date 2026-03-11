@@ -48,12 +48,13 @@ class MultiDictionary:
         return listaRichWord
 
     def searchWordDiacotonic(self, testo, path):
-
+        dizionario_base= self.printDic(path)
         listaRichWord = []
         paroleInserite = testo.split()
 
         for word in paroleInserite:
-            parole_dizionario = self.printDic(path) #per ogni parola riutilizzo il dizionario intero
+            word_pulita = word.lower().strip(".,;:!?")
+            parole_dizionario=dizionario_base[:] #per ogni parola riutilizzo una copia del dizionario intero
             corretta=False
             itera=True
 
@@ -65,13 +66,13 @@ class MultiDictionary:
 
                 indiceMeta=int(lunghezza/2)
                 parolaMeta=(parole_dizionario.__getitem__( indiceMeta))
-                if (parolaMeta>word): #es. sto cercando "anatra", ma a metà mi fermo su "gatto"
+                if (parolaMeta>word_pulita): #es. sto cercando "anatra", ma a metà mi fermo su "gatto"
                     parole_dizionario=parole_dizionario[:indiceMeta] #seleziono la prima metà degli elementi
                     continue
-                elif (parolaMeta<word):
+                elif (parolaMeta<word_pulita):
                     parole_dizionario = parole_dizionario[indiceMeta + 1:] #seleziono la seconda metà
                     continue
-                else: #(parolaMeta==word)
+                else: #(parolaMeta==word_pulita)
                     corretta=True
                     itera=False
 
