@@ -1,3 +1,5 @@
+from selectors import SelectSelector
+
 from dictionary import Dictionary
 from richWord import RichWord
 
@@ -12,8 +14,10 @@ class MultiDictionary:
         parole_dizionario = self.printDic(path)
         listaRichWord = []
         paroleInserite = testo.split()
+        corretta=False
         for word in paroleInserite:
-            corretta = word.lower() in parole_dizionario
+            if parole_dizionario.__contains__(word):
+                corretta=True
             nuova = RichWord(word, corretta)
             listaRichWord.append(nuova)
 
