@@ -31,6 +31,14 @@ while(True):
         for e in erroriLinear:
             print(e)
         print("Time elapsed:", end2 - start2, "seconds")
+
+        star3=time.time()
+        erroriDiacotonic=sc.handleSentenceDiacotonic(txtIn, file)
+        end3=time.time()
+        print("Parole errate:")
+        for e in erroriDiacotonic:
+            print(e)
+        print("Time elapsed:", end2 - start2, "seconds")
         continue
 
     elif int(txtIn) == 2:
@@ -51,6 +59,14 @@ while(True):
         for e in erroriLinear:
             print(e)
         print("Time elapsed:", end2 - start2, "seconds")
+
+        star3 = time.time()
+        erroriDiacotonic = sc.handleSentenceDiacotonic(txtIn, file)
+        end3 = time.time()
+        print("Parole errate:")
+        for e in erroriDiacotonic:
+            print(e)
+        print("Time elapsed:", end2 - start2, "seconds")
         continue
 
     elif int(txtIn) == 3:
@@ -63,6 +79,7 @@ while(True):
         print("Parole errate:")
         for e in errori:
             print(e)
+        print("Time elapsed:", end- start, "seconds")
 
         start2 = time.time()  # inizio misurazione
         erroriLinear = sc.handleSentenceLinear(txtIn, file)
@@ -71,7 +88,14 @@ while(True):
         for e in erroriLinear:
             print(e)
         print("Time elapsed:", end2 - start2, "seconds")
-        continue
+
+        star3 = time.time()
+        erroriDiacotonic = sc.handleSentenceDiacotonic(txtIn, file)
+        end3 = time.time()
+        print("Parole errate:")
+        for e in erroriDiacotonic:
+            print(e)
+        print("Time elapsed:", end2 - start2, "seconds")
         continue
 
     elif int(txtIn) == 4:

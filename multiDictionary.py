@@ -1,3 +1,4 @@
+from operator import truediv
 from selectors import SelectSelector
 
 from dictionary import Dictionary
@@ -38,10 +39,47 @@ class MultiDictionary:
             corretta=False
             word_pulita = word.lower().strip(".,;:!?")
             for parola in parole_dizionario:
-                if (word_pulita == parola): #IMPLEMENTA __eq__ !
+                if (word_pulita == parola): #non serve implementare __eq__ perchè sono stringhe
                     corretta = True
 
             nuova = RichWord(word, corretta)
             listaRichWord.append(nuova)
 
         return listaRichWord
+
+    def searchWordDiacotonic(self, testo, path):
+
+        listaRichWord = []
+        paroleInserite = testo.split()
+
+        for word in paroleInserite:
+            parole_dizionario = self.printDic(path) #per ogni parola riutilizzo il dizionario intero
+            corretta=False
+            itera=True
+
+            while itera:
+                lunghezza=len(parole_dizionario)
+                if lunghezza == 0: #parola non trovata
+                    itera = False
+                    break
+
+                indiceMeta=int(lunghezza/2)
+                parolaMeta=(parole_dizionario.__getitem__( indiceMeta))
+                if (parolaMeta>word): #es. sto cercando "anatra", ma a metà mi fermo su "gatto"
+                    parole_dizionario=parole_dizionario[:indiceMeta] #seleziono la prima metà degli elementi
+                    continue
+                elif (parolaMeta<word):
+                    parole_dizionario = parole_dizionario[indiceMeta + 1:] #seleziono la seconda metà
+                    continue
+                else: #(parolaMeta==word)
+                    corretta=True
+                    itera=False
+
+            nuova = RichWord(word, corretta)
+            listaRichWord.append(nuova)
+
+        return listaRichWord
+
+
+
+

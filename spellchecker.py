@@ -25,6 +25,16 @@ class SpellChecker:
                 paroleErrate.append(parola)
         return paroleErrate
 
+    def handleSentenceDiacotonic(self, txtIn, path):
+        print("-" * 32)
+        print("Using Diacotonic Research: ")
+        paroleErrate = list()
+        lista = self._multiDictionary.searchWordDiacotonic(txtIn, path)
+        for parola in lista:
+            if not parola.corretta:
+                paroleErrate.append(parola)
+        return paroleErrate
+
     def printMenu(self):
         print("______________________________\n" +
               "      SpellChecker 101\n"+
