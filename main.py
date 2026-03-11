@@ -13,7 +13,7 @@ while(True):
         continue
 
     if int(txtIn) == 1:
-        file="resources/italian.txt"
+        file="resources/Italian.txt"
         print("Inserisci la tua frase in Italiano\n")
         txtIn = input()
         start = time.time()  # inizio misurazione

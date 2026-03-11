@@ -10,14 +10,20 @@ class MultiDictionary:
     def printDic(self, path):
         return self._dict.loadDictionary(path)
 
-    def searchWord(self, testo, path): #
+    def searchWord(self, testo, path):
+
         parole_dizionario = self.printDic(path)
         listaRichWord = []
+
         paroleInserite = testo.split()
-        corretta=False
+
         for word in paroleInserite:
-            if parole_dizionario.__contains__(word):
-                corretta=True
+            word_pulita = word.lower().strip(".,;:!?")
+            if parole_dizionario.__contains__(word_pulita):
+                corretta = True
+            else:
+                corretta = False
+
             nuova = RichWord(word, corretta)
             listaRichWord.append(nuova)
 
